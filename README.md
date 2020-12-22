@@ -1,4 +1,4 @@
-# KoELECTRA 기반 영화 리뷰 감성 분석 
+# KoELECTRA 기반 네이버 영화 리뷰 감성 분석 
 
 
 **ELECTRA**
