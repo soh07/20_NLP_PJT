@@ -1,7 +1,7 @@
-# KoELECTRA 활용 영화 리뷰 감성 분석 
+# KoELECTRA 기반 영화 리뷰 감성 분석 
 
 
-# ELECTRA
+**ELECTRA**
 <p float="left" align="center">
     <img width="500" src="https://weeklypythoncode.files.wordpress.com/2020/03/image4.gif?w=400&zoom=2" />  
 </p>
