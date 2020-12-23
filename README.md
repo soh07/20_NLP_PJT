@@ -19,8 +19,11 @@
     - 한 문장에 있는 단어들을 차례대로 학습하는 것이 아니라 양방향으로 학습하면서 마스킹처리(Masked out, 모델이 문장을 이해해서 단어를 예측하도록 “가려놓은” 단어들)된 단어들을 예측하는 모델.
     - 입력 시퀀스의 토큰 중 약 15% 정도를 마스킹하고 이를 복원하는 테스크를 통해 학습합니다.
 
-여기서는,
+이 과제에서는,
 ELECTRA모델을 한국어로 학습한 KoELECTRA를 적용하였습니다.
+
+
+**About KoELECTRA**
 
 [KoELECTRA](https://github.com/monologg/KoELECTRA) 
  - **34GB 한국어 text**로 학습
@@ -33,8 +36,6 @@ from transformers import ElectraModel, ElectraTokenizer
 model = ElectraModel.from_pretrained("monologg/koelectra-base-v3-discriminator")
 tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-discriminator")  #ElectraTokenizer는 Google의 wordpiece인 BertTokenizer와 동일합니다. 
 ```
-
-**About KoELECTRA**
 |                   |               | Layers | Embedding Size | Hidden Size | # heads |
 | ----------------- | ------------: | -----: | -------------: | ----------: | ------: |
 | `KoELECTRA-Base`  | Discriminator |     12 |            768 |         768 |      12 |
@@ -69,9 +70,9 @@ model = TFElectraModel.from_pretrained("monologg/koelectra-base-v3-discriminator
 [2, 11229, 29173, 13352, 25541, 4110, 7824, 17788, 18, 3]
 ```
 
-## Data 분석 과정 ##
+# Data 분석 과정
 
-# Data Set
+## Data Set ##
  - Naver sentiment movie corpus v1.0 => https://github.com/e9t/nsmc
  - Column 정보
     id) The review id, provieded by Naver
@@ -79,7 +80,7 @@ model = TFElectraModel.from_pretrained("monologg/koelectra-base-v3-discriminator
     label) The sentiment class of the review. (0: negative, 1: positive) 
  - [ratings_train.txt] 150,000건 리뷰, [ratings_test.txt] 50,000건 리뷰
   
-# Data Split
+## Data Split ##
  - 검증 데이터셋 확보를 위해, training.txt의 data를 (학습:검증)=(80:20)으로 분할합니다.
  - [Data 개수] 학습:검증:평가 = 120,000:30,000:50,000
  
@@ -88,12 +89,12 @@ from sklearn.model_selection import train_test_split
 train_sentences, dev_sentences, train_labels, dev_labels = train_test_split(train_sentences, train_labels,
                                                                             test_size=0.2, random_state=42)
 ```
-# Tokenize
+## Tokenize ##
 ```python
 from transformers import BertTokenizer
 text_tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-discriminator")
 ```
-# Building Model
+## Building Model ##
 
 | Layer (type)                     | Output Shape         | Param # | Connected to         |
 | ---------------------------------| -------------------: | -------:| -------------------: |
@@ -108,7 +109,7 @@ text_tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-di
 | dense_1 (Dense)                  | (None, None, 256)    |   33024 |dense[0][0]           |
 | classifier (Dense)               | (None, None, 1)      |     257 |dense_1[0][0]         |
 
-# Training Model
+## Training Model ##
  - Optimizer : AdamW  (BERT adopts the Adam optimizer with weight decay) 
     -> 매 weight 업데이트마다 learning rate를 일정 비율 감소시켜주는 learning rate schedule 적용
     -> weight decay: gradient descent에서 weight 업데이트 할 때, 이전 weight의 크기를 일정 비율 감소시켜줌으로써 over-fitting 방지
@@ -124,7 +125,7 @@ text_tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-di
 | num train steps | 15000 |
 | warmup steps    | 1500  |
 
-# Performance
+## Performance ##
  - 참고로한 [KoELECTRA](https://github.com/monologg/KoELECTRA) 의 결과와 동일하게 Accuracy 90.6% 확인  
  - 자체적으로 설계한 classic한 LSTM 기반 모델과 KoELECTRA 적용 모델과의 성능 비교
  - LSTM기반 모델 코드는 " " 참고
@@ -140,7 +141,7 @@ text_tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-di
  - epoch 50번 수행한 LSTM기반 모델도 높은 성능을 보여주지만, 동일 epoch 비교 시, KoELCTRA가 현저하게 더 높은 성능을 보여줍니다. 
 
 
-## Reference
+# Reference
 - [ELECTRA](https://github.com/google-research/electra)
 - [KoELECTRA](https://github.com/monologg/KoELECTRA)
 - [Huggingface Transformers](https://huggingface.co/transformers/model_doc/electra.html#)
