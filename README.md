@@ -3,12 +3,11 @@
  
 
 # 모델 설명
-**ELECTRA**
+## [ELECTRA](https://openreview.net/pdf?id=r1xMH1BtvB) (Efficiently Learning an Encoder that Classifies Token Replacements Accurately) ##
 <p float="left" align="center">
     <img width="500" src="https://weeklypythoncode.files.wordpress.com/2020/03/image4.gif?w=400&zoom=2" />  
 </p>
 
-[ELECTRA](https://openreview.net/pdf?id=r1xMH1BtvB) (Efficiently Learning an Encoder that Classifies Token Replacements Accurately) 
  - ICLR 2020에서 구글 리서치 팀에서 발표한 새로운 pre-training 기법을 적용한 language model.
  - 학습 효율을 향상시키기 위해 'Replaced Token Detection,(RTD)'이라는 새로운 pre-training 테스크를 통해 학습하며, 
    동일 조건(모델 크기, 데이터, 컴퓨팅 리소스)에서 BERT의 성능을 능가했습니다.
@@ -23,7 +22,7 @@
 ELECTRA모델을 한국어로 학습한 KoELECTRA를 적용하였습니다.
 
 
-**About KoELECTRA**
+## About KoELECTRA ##
 
 [KoELECTRA](https://github.com/monologg/KoELECTRA) 
  - **34GB 한국어 text**로 학습
@@ -131,7 +130,7 @@ text_tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-di
  - LSTM기반 모델 코드는 " " 참고
  - (Ref1) BERT pre-trained tokenizer + Embedding layer + LSTM + 1-hidden layer + Adam Optimizer + batch size 32 + epoch 4
  - (Ref2) BERT pre-trained tokenizer + Embedding layer + LSTM + 1-hidden layer + Adam Optimizer + batch size 32 + epoch 50
- - **(MODEL) KoELECTRA pre-trained tokenizer + KoELECTRA + 2-hidden layer + AdamW Optimizer + batch size 32 + epoch 4 **
+ - (MODEL) KoELECTRA pre-trained tokenizer + KoELECTRA + 2-hidden layer + AdamW Optimizer + batch size 32 + epoch 4
  
 | Model     | Accuracy|
 | :-------- | ------: | 
