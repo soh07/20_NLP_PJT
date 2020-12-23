@@ -124,7 +124,7 @@ text_tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-di
 ### Performance ###
  - 참고로한 [KoELECTRA](https://github.com/monologg/KoELECTRA) 의 결과와 동일하게 Accuracy 90.6% 확인  
  - 자체적으로 설계한 classic한 LSTM 기반 모델과 KoELECTRA 적용 모델과의 성능 비교
- - LSTM기반 모델 코드는 " " 참고
+ - LSTM기반 모델 코드는 [LSTM Code](https://github.com/soh07/NLP_PJT/blob/main/99-2.notebook_nsmc_lstm.py) 참고
  - (Ref1) BERT pre-trained tokenizer + Embedding layer + LSTM + 1-hidden layer + Adam Optimizer + batch size 32 + epoch 4
  - (Ref2) BERT pre-trained tokenizer + Embedding layer + LSTM + 1-hidden layer + Adam Optimizer + batch size 32 + epoch 50
  - (MODEL) KoELECTRA pre-trained tokenizer + KoELECTRA + 2-hidden layer + AdamW Optimizer + batch size 32 + epoch 4
