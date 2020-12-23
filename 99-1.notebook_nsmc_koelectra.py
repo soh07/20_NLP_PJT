@@ -69,14 +69,6 @@ from sklearn.model_selection import train_test_split
 train_sentences, dev_sentences, train_labels, dev_labels = train_test_split(train_sentences, train_labels,
                                                                             test_size=0.2, random_state=42)
 
-##
-oov_token = "<OOV>"
-pad_type = 'post'
-truc_type = 'post'
-embedding_size = 64
-max_len = 128   
-#output_size = 2
-
 
 ## Preprocess the data
 # Tokenizing & Encoding
