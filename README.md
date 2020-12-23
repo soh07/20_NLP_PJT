@@ -71,14 +71,15 @@ model = TFElectraModel.from_pretrained("monologg/koelectra-base-v3-discriminator
 ### Data Set ###
  - Naver sentiment movie corpus v1.0 => https://github.com/e9t/nsmc
  - Column 정보
-    id) The review id, provieded by Naver
-    document) The actual review
-    label) The sentiment class of the review. (0: negative, 1: positive) 
- - [ratings_train.txt] 150,000건 리뷰, [ratings_test.txt] 50,000건 리뷰
+    - id) The review id, provieded by Naver
+    - document) The actual review
+    - label) The sentiment class of the review. (0: negative, 1: positive) 
+ - 'ratings_train.txt' 150,000건 리뷰 
+ - 'ratings_test.txt' 50,000건 리뷰
   
 ### Data Split ###
  - 검증 데이터셋 확보를 위해, training.txt의 data를 (학습:검증)=(80:20)으로 분할합니다.
- - [Data 개수] 학습:검증:평가 = 120,000:30,000:50,000
+ - [Data 수] 학습:검증:평가 = 120,000 : 30,000 : 50,000
  
 ```python
 from sklearn.model_selection import train_test_split
