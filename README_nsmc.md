@@ -110,7 +110,6 @@ text_tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-di
  - Optimizer : AdamW  (BERT adopts the Adam optimizer with weight decay) 
     -> 매 weight 업데이트마다 learning rate를 일정 비율 감소시켜주는 learning rate schedule 적용
     -> weight decay: gradient descent에서 weight 업데이트 할 때, 이전 weight의 크기를 일정 비율 감소시켜줌으로써 over-fitting 방지
- - 추가로 먼저 0에서 워밍업 한 다음 0으로 감소하는 learning rate schedule 적용합니다.
  - learning rate : 2e-5
  - Binary Classification이므로 손실함수는 binary_crossentropy,활성화 함수는 Sigmoid 적용.
  - 평가지표는 Accuracy 
