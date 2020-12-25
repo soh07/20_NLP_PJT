@@ -122,8 +122,8 @@ text_tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-di
 | warmup steps    | 1500  |
 
 ### Performance ###
- - 참고로한 [KoELECTRA](https://github.com/monologg/KoELECTRA) 의 결과와 동일하게 Accuracy 90.6% 확인  
- - classic한 LSTM 적용 모델과 BERT 기본 + KoELECTRA 적용 모델과의 성능 비교
+ - 참고로 한 [KoELECTRA](https://github.com/monologg/KoELECTRA) 의 결과와 동일하게 Accuracy 90.6% 확인  
+ - 모델 성능 비교를 위해 classic한 LSTM 적용 모델을 만들어 KoELECTRA 적용 모델과의 성능 비교를 하였습니다.
  - LSTM기반 모델 코드는 [LSTM Code](https://github.com/soh07/NLP_PJT/blob/main/99-2.notebook_nsmc_lstm.py) 참고
  - tokenizing은 동일하게 BERT의 Wordpiece 방식 적용하여 비교
  - (Ref1) 
