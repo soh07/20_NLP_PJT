@@ -13,6 +13,7 @@ import tensorflow_hub as hub
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
+impord pandas as pd
 import numpy as np
 import json
 import os
@@ -206,3 +207,13 @@ print("Output Shape: {}\n".format(test_pred.shape))
 print(test_pred)
 print(np.argmax(test_pred, axis=1))
 print(model.evaluate(test, test_labels))
+
+## Predict the test set
+new_test = pd.read_csv(os.path.join("../input/en-data/en_data.csv"))
+print(testset.head())
+
+new_test = bert_encode(new_test['utterance'], text_tokenizer)
+new_test_pred = model.predict(new_test)
+submission = pd.DataFrame({
+     "Predicted" : np.argmax(new_test_pred, axis=1)})
+submission.to_csv('submisson_friends.csv', index=False)
