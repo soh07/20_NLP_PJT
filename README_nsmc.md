@@ -40,7 +40,7 @@ tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-discrim
 
 **Pretraining Details**
  - 뉴스, 위키, 나무위키, 모두의 말뭉치 Corpus
- - Vocal Len 35000
+ - Vocab Len 35000
  - [[Preprocessing]](./docs/preprocessing.md) 참고
 
 | Model        | Batch Size | Train Steps |   LR | Max Seq Len | Generator Size | Train Time |
