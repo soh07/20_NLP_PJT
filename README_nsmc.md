@@ -116,10 +116,11 @@ text_tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-di
  - Batch Size : 32   (몇 개의 데이터를 보고 한 번의 가중치 업데이트를 수행할 것인지 결정)
  - Epoch : 4         (전체 학습데이터를 한 번씩 학습에 활용한 것이 1 epoch)
  - Hyperparameter Tuning은 별도없이 config의 셋팅을 그대로 사용 
-| train data size | 120000|
-| steps per epochs| 3750  |
-| num train steps | 15000 |
-| warmup steps    | 1500  |
+ 
+ - train data size:120000
+ - steps per epochs: 3750
+ - num train steps: 15000 
+ - warmup steps    : 1500  
 
 ### Performance ###
  - 참고로 한 [KoELECTRA](https://github.com/monologg/KoELECTRA) 의 결과와 동일하게 Accuracy 90.6% 확인  
